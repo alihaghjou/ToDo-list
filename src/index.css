@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::after, *::before {
+    @apply box-border
+}
+
+html {
+    @apply w-3/5 m-auto
+}
+
+body {
+    @apply p-4 m-auto bg-slate-900 text-slate-200 min-h-screen
+}
+
+body > * {
+    @apply text-slate-100
+}
