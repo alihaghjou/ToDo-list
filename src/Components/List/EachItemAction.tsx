@@ -11,6 +11,7 @@ const EachItemAction = ({
   data: data[];
   setData: React.Dispatch<React.SetStateAction<data[]>>;
 }) => {
+
   function handleActions(selected: data, action: string) {
     if (!data) return;
     switch (action) {

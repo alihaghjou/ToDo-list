@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import Form from "./Components/Form/Form";
 import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
@@ -13,7 +13,6 @@ export interface data {
 }
 
 function App() {
-  //TODO: add advance description to each item
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [data, setData] = useState<data[]>([]);

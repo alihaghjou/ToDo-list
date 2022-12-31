@@ -15,6 +15,7 @@ const List = ({
   data: data[];
   setData: React.Dispatch<React.SetStateAction<data[]>>;
 }) => {
+  
   return (
     <div className="flex flex-col gap-4 my-6">
       {data.map((item) => (
@@ -22,7 +23,10 @@ const List = ({
           key={item.id}
           className="flex flex-col py-4 justify-between pr-4 border-b-2 border-sky-900 hover:shadow-xl"
         >
-          <EachItemAction item={item} data={data} setData={setData} />
+          <EachItemAction item={item}
+           data={data}
+            setData={setData}
+             />
           <Accordion
             sx={{
               background: "none",
