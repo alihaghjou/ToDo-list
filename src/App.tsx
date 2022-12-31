@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import { useCallback, useEffect, useRef, useState } from "react";
-import Form from "./Components/Form";
-import List from "./Components/List";
+import { useEffect, useRef, useState } from "react";
+import Form from "./Components/Form/Form";
+import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
 
 export interface data {
@@ -9,6 +9,7 @@ export interface data {
   title: string;
   completed: boolean;
   date: Date;
+  description: string;
 }
 
 function App() {
@@ -21,16 +22,16 @@ function App() {
   useEffect(() => {
     if (render.current === 0) {
       if (localStorage.getItem("data")) {
-        setData(JSON.parse(localStorage.getItem("data") as string))
+        setData(JSON.parse(localStorage.getItem("data") as string));
       }
-      render.current = 1
+      render.current = 1;
     }
   }, []);
 
   useEffect(() => {
     localStorage.removeItem("data");
-    localStorage.setItem("data", JSON.stringify(data))
-  }, [data])
+    localStorage.setItem("data", JSON.stringify(data));
+  }, [data]);
 
   return (
     <div className="px-4">

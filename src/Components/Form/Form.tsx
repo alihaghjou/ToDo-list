@@ -1,10 +1,12 @@
 import { TextField, Button } from "@mui/material";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { data } from "../App";
+import { data } from "../../App";
+import FormDisplay from "./FormDisplay";
 
-interface todoInput {
+export interface todoInput {
   Todo: string;
+  description: string;
 }
 
 const Form = ({
@@ -27,6 +29,7 @@ const Form = ({
           title: input.Todo,
           completed: false,
           date: new Date(),
+          description: input.description,
         },
       ]);
       setIsSuccess(true);
@@ -49,6 +52,7 @@ const Form = ({
         title: input.Todo,
         completed: false,
         date: new Date(),
+        description: input.description,
       },
       ...data,
     ]);
@@ -59,24 +63,9 @@ const Form = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-row w-full items-center justify-center mb-4"
+      className="flex flex-row w-full mb-4 justify-center items-center"
     >
-      <div className="w-full ">
-        <TextField
-          {...register("Todo", { required: true })}
-          fullWidth
-          id="standard"
-          label="Add Your ToDo"
-          variant="standard"
-          sx={{
-            input: { color: "aliceblue", fontSize: "22px" },
-            label: { color: "blueviolet" },
-          }}
-        />
-      </div>
-      <Button type="submit" className="px-4" size="large">
-        Submit
-      </Button>
+      <FormDisplay register={register} />
     </form>
   );
 };
