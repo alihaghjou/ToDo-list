@@ -3,19 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import Form from "./Components/Form/Form";
 import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
-
-export interface data {
-  id: number;
-  title: string;
-  completed: boolean;
-  date: Date;
-  description: string;
-}
+import type { todoType } from "./types/types";
 
 function App() {
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [data, setData] = useState<data[]>([]);
+  const [data, setData] = useState<todoType[]>([]);
   const render = useRef(0);
 
   useEffect(() => {
@@ -43,7 +36,7 @@ function App() {
       {data?.length ? (
         <List data={data} setData={setData} />
       ) : (
-        <Typography textAlign="center" fontSize="28px">
+        <Typography variant="h4" textAlign="center">
           Your List is Empty!
         </Typography>
       )}

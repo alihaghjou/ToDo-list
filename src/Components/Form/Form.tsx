@@ -1,12 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { data } from "../../App";
+import type { todoType, todoInput } from "../../types/types";
 import FormDisplay from "./FormDisplay";
-
-export interface todoInput {
-  Todo: string;
-  description: string;
-}
 
 const Form = ({
   data,
@@ -14,8 +9,8 @@ const Form = ({
   setIsSuccess,
   setOpen,
 }: {
-  data: data[];
-  setData: React.Dispatch<React.SetStateAction<data[]>>;
+  data: todoType[];
+  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -62,7 +57,7 @@ const Form = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-row w-full mb-4 justify-center items-center"
+      className="flex flex-col gap-5 w-full mb-4 justify-center items-center"
     >
       <FormDisplay register={register} />
     </form>

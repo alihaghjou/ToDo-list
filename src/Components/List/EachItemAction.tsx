@@ -1,18 +1,17 @@
 import { Typography, Button } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import type { data } from "../../App";
+import type { todoType } from "../../types/types";
 
 const EachItemAction = ({
   item,
   data,
   setData,
 }: {
-  item: data;
-  data: data[];
-  setData: React.Dispatch<React.SetStateAction<data[]>>;
+  item: todoType;
+  data: todoType[];
+  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
-
-  function handleActions(selected: data, action: string) {
+  function handleActions(selected: todoType, action: string) {
     if (!data) return;
     switch (action) {
       case "delete":

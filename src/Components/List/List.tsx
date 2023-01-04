@@ -4,18 +4,17 @@ import {
   AccordionSummary,
   Typography,
 } from "@mui/material";
-import { data } from "../../App";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EachItemAction from "./EachItemAction";
+import type { todoType } from "../../types/types";
 
 const List = ({
   data,
   setData,
 }: {
-  data: data[];
-  setData: React.Dispatch<React.SetStateAction<data[]>>;
+  data: todoType[];
+  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
-  
   return (
     <div className="flex flex-col gap-4 my-6">
       {data.map((item) => (
@@ -23,10 +22,7 @@ const List = ({
           key={item.id}
           className="flex flex-col py-4 justify-between pr-4 border-b-2 border-sky-900 hover:shadow-xl"
         >
-          <EachItemAction item={item}
-           data={data}
-            setData={setData}
-             />
+          <EachItemAction item={item} data={data} setData={setData} />
           <Accordion
             sx={{
               background: "none",
