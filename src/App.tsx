@@ -5,6 +5,8 @@ import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
 import type { todoType } from "./types/types";
 
+//TODO: filter todo s based on all, complete and onGoing
+
 function App() {
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
