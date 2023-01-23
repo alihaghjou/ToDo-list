@@ -25,7 +25,7 @@ const EachTodoDisplay = ({
           key={EachTODO.id}
           className="flex flex-col py-4 justify-between pr-4 border-b-2 border-sky-900 hover:shadow-xl"
         >
-          <EachItemAction item={EachTODO} data={data} setData={setData} />
+          <EachItemAction EachTodo={EachTODO} data={data} setData={setData} />
           {EachTODO.description && (
             <Accordion
               sx={{

@@ -1,16 +1,23 @@
 import { Typography, Button } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import type { todoType } from "../../types/types";
+import React, { useState } from "react";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import EditTodo from "./EditTodo";
 
 const EachItemAction = ({
-  item,
+  EachTodo,
   data,
   setData,
 }: {
-  item: todoType;
+  EachTodo: todoType;
   data: todoType[];
   setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpenModal = () => setOpen(true);
+
   function handleActions(selected: todoType, action: string) {
     if (!data) return;
     switch (action) {
@@ -33,23 +40,39 @@ const EachItemAction = ({
   return (
     <div className="flex flex-row justify-between">
       <div>
-        <Typography fontSize="20px">{item.title}</Typography>
+        <section className="flex">
+          <Typography fontSize="20px" marginRight="10px">
+            {EachTodo.title}
+          </Typography>
+          <IconButton onClick={handleOpenModal} size="small">
+            <EditIcon fontSize="small" color="info" />
+          </IconButton>
+        </section>
+        <EditTodo
+          EachTodo={EachTodo}
+          data={data}
+          setData={setData}
+          open={open}
+          setOpen={setOpen}
+        />
         <Typography fontSize="12px" fontStyle="italic" color="lightgray">
-          {typeof item.date !== "string" ? item.date.toDateString() : item.date}
+          {typeof EachTodo.date !== "string"
+            ? EachTodo.date.toDateString()
+            : EachTodo.date}
         </Typography>
       </div>
       <div className="flex flex-row justify-center items-center gap-2">
-        {item.completed ? (
+        {EachTodo.completed ? (
           <CheckCircleOutlineIcon />
         ) : (
           <Button
             color="warning"
-            onClick={() => handleActions(item, "complete")}
+            onClick={() => handleActions(EachTodo, "complete")}
           >
             Complete
           </Button>
         )}
-        <Button color="error" onClick={() => handleActions(item, "delete")}>
+        <Button color="error" onClick={() => handleActions(EachTodo, "delete")}>
           Delete
         </Button>
       </div>
