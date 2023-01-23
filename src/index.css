@@ -5,11 +5,11 @@
 *,
 *::after,
 *::before {
-  @apply box-border sm:text-xl text-sm 
+  @apply box-border md:text-xl text-sm;
 }
 
 html {
-  @apply w-full m-auto sm:w-3/5 ;
+  @apply w-full m-auto md:w-9/12;
 }
 
 body {

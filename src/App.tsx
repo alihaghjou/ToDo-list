@@ -1,20 +1,15 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Form from "./Components/Form/Form";
 import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
 import type { todoType } from "./types/types";
-import ButtonGroup from "@mui/material/ButtonGroup";
-
-//TODO: filter todo s based on all, complete and onGoing
 
 function App() {
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [data, setData] = useState<todoType[]>([]);
   const render = useRef(0);
-
-
 
   useEffect(() => {
     if (render.current === 0) {

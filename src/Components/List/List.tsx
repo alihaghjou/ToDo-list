@@ -11,6 +11,8 @@ const List = ({
   setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
   const [displayData, setDisplayData] = useState<todoType[]>([]);
+  const isOnGoing = data.filter((item) => item.completed !== true);
+  const isComplete = data.filter((item) => item.completed === true);
 
   function filterList(action: "complete" | "onGoing" | "all") {
     switch (action) {
@@ -33,15 +35,12 @@ const List = ({
 
   return (
     <div className="flex flex-col gap-4 my-6 relative">
-      {displayData.map((EachTODO) => (
-        <EachTodoDisplay
-          key={EachTODO.id}
-          EachTODO={EachTODO}
-          data={data}
-          setData={setData}
-        />
-      ))}
-      <ButtonGroup fullWidth className="fixed bottom-0 left-0 mb-4 px-20">
+      <EachTodoDisplay
+        data={data}
+        setData={setData}
+        displayData={displayData}
+      />
+      <ButtonGroup fullWidth className="absolute bottom-0 translate-y-full">
         <Button onClick={() => filterList("all")}>All</Button>
         <Button onClick={() => filterList("complete")}>Complete</Button>
         <Button onClick={() => filterList("onGoing")}>OnGoing</Button>
