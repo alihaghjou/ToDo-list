@@ -5,6 +5,9 @@ import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
 import type { todoType } from "./types/types";
 
+//TODO: add filter button
+// change site font based on screen size
+
 function App() {
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
