@@ -2,27 +2,28 @@ import { Modal, Box, Typography, TextField, Button } from "@mui/material";
 import React, { useState } from "react";
 import { z } from "zod";
 import { todoType } from "../../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { editTodo } from "../../redux/dataSlice";
 
-const titleSchema = z
-  .string({
-    required_error: "Required",
-  })
-  .max(50)
-  .min(1);
+// const titleSchema = z
+//   .string({
+//     required_error: "Required",
+//   })
+//   .max(50)
+//   .min(1);
 
 const EditTodo = ({
   EachTodo,
-  data,
-  setData,
   open,
   setOpen,
 }: {
   EachTodo: todoType;
-  data: todoType[];
-  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const selector = useSelector((state: RootState) => state.todo)
+  const dispatch = useDispatch()
   const handleCloseModal = () => setOpen(false);
   const [editTitleValue, setEditTitleValue] = useState(EachTodo.title);
   const [editDescriptionValue, setEditDescriptionValue] = useState(
@@ -31,17 +32,18 @@ const EditTodo = ({
 
   function handleTodoEdit(e: React.FormEvent) {
     e.preventDefault();
-    const tempData = [...data];
-    const index = tempData.indexOf(EachTodo);
-    const Set: todoType = {
-      title: titleSchema.parse(editTitleValue),
-      description: z.string().parse(editDescriptionValue),
-      date: EachTodo.date,
-      id: EachTodo.id,
-      completed: EachTodo.completed,
-    };
-    tempData.splice(index, 1, Set);
-    setData(tempData);
+    // const tempData = [...data];
+    // const index = tempData.indexOf(EachTodo);
+    // const Set: todoType = {
+    //   title: titleSchema.parse(editTitleValue),
+    //   description: z.string().parse(editDescriptionValue),
+    //   date: EachTodo.date,
+    //   id: EachTodo.id,
+    //   completed: EachTodo.completed,
+    // };
+    // tempData.splice(index, 1, Set);
+    // setData(tempData);
+    dispatch(editTodo)
     handleCloseModal();
   }
 

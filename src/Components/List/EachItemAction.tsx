@@ -5,38 +5,42 @@ import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import EditTodo from "./EditTodo";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { completeTodo, deleteTodo } from "../../redux/dataSlice";
 
 const EachItemAction = ({
   EachTodo,
-  data,
-  setData,
 }: {
   EachTodo: todoType;
-  data: todoType[];
-  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
+  const selector = useSelector((state: RootState) => state.todo)
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
   const handleOpenModal = () => setOpen(true);
 
   function handleActions(selected: todoType, action: string) {
-    if (!data) return;
+    if (!selector) return;
     switch (action) {
       case "delete":
-        const deleteItem = data?.filter((item) => item.id !== selected.id);
-        setData(deleteItem);
-        localStorage.setItem("data", JSON.stringify(deleteItem));
+        dispatch(deleteTodo())
+        // const deleteItem = data?.filter((item) => item.id !== selected.id);
+        // setData(deleteItem);
+        // localStorage.setItem("data", JSON.stringify(deleteItem));
         break;
       case "complete":
-        const completeItem = data?.filter((item) => item.id === selected.id);
-        const restItem = data?.filter((item) => item.id !== selected.id);
-        const place = data.findIndex((item) => item.id === selected.id);
-        completeItem[0].completed = true;
-        restItem.splice(place, 0, completeItem[0]);
-        setData(restItem);
-        localStorage.setItem("data", JSON.stringify(restItem));
+        dispatch(completeTodo())
+        // const completeItem = data?.filter((item) => item.id === selected.id);
+        // const restItem = data?.filter((item) => item.id !== selected.id);
+        // const place = data.findIndex((item) => item.id === selected.id);
+        // completeItem[0].completed = true;
+        // restItem.splice(place, 0, completeItem[0]);
+        // setData(restItem);
+        // localStorage.setItem("data", JSON.stringify(restItem));
         break;
     }
   }
+  console.log(selector)
   return (
     <div className="flex flex-row justify-between">
       <div>
@@ -50,8 +54,6 @@ const EachItemAction = ({
         </section>
         <EditTodo
           EachTodo={EachTodo}
-          data={data}
-          setData={setData}
           open={open}
           setOpen={setOpen}
         />

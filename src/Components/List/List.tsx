@@ -2,42 +2,39 @@ import { Button, ButtonGroup } from "@mui/material";
 import type { todoType } from "../../types/types";
 import { useEffect, useState } from "react";
 import EachTodoDisplay from "./EachTodoDisplay";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const List = ({
-  data,
-  setData,
 }: {
-  data: todoType[];
-  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
+  const selector = useSelector((state: RootState) => state.todo)
   const [displayData, setDisplayData] = useState<todoType[]>([]);
-  const isOnGoing = data.filter((item) => item.completed !== true);
-  const isComplete = data.filter((item) => item.completed === true);
+  // const isOnGoing = data.filter((item) => item.completed !== true);
+  // const isComplete = data.filter((item) => item.completed === true);
 
   function filterList(action: "complete" | "onGoing" | "all") {
     switch (action) {
       case "complete":
-        setDisplayData(data.filter((item) => item.completed === true));
+        setDisplayData(selector.filter((item: todoType) => item.completed === true));
         break;
       case "onGoing":
-        setDisplayData(data.filter((item) => item.completed !== true));
+        setDisplayData(selector.filter((item: todoType) => item.completed !== true));
         break;
 
       case "all":
-        setDisplayData(data);
+        setDisplayData(selector);
         break;
     }
   }
 
   useEffect(() => {
-    setDisplayData(data);
-  }, [data]);
+    setDisplayData(selector);
+  }, [selector]);
 
   return (
     <div className="flex flex-col gap-4 my-6 relative">
       <EachTodoDisplay
-        data={data}
-        setData={setData}
         displayData={displayData}
       />
       <ButtonGroup fullWidth className="absolute bottom-0 translate-y-full">

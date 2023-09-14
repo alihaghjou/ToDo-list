@@ -9,18 +9,13 @@ import EachItemAction from "./EachItemAction";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { todoType } from "../../types/types";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../redux/store";
 
 const EachTodoDisplay = ({
   displayData,
-  data,
-  setData,
 }: {
   displayData: todoType[];
-  data: todoType[];
-  setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
-  const selector = useSelector((state: RootState) => state.todo)
   return (
     <>
       {displayData.map((EachTODO) => (
@@ -28,7 +23,7 @@ const EachTodoDisplay = ({
           key={EachTODO.id}
           className="flex flex-col py-4 justify-between pr-4 border-b-2 border-sky-900 hover:shadow-xl"
         >
-          <EachItemAction EachTodo={EachTODO} data={data} setData={setData} />
+          <EachItemAction EachTodo={EachTODO} />
           {EachTODO.description && (
             <Accordion
               sx={{
