@@ -1,7 +1,7 @@
 import { Typography, Button } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import type { todoType } from "../../types/types";
-import React, { useState } from "react";
+import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import EditTodo from "./EditTodo";

@@ -27,4 +27,5 @@ export const addTodoFunction = (state: todoType[], action: PayloadAction<todoInp
       date: new Date(),
       description: action.payload.description,
     });
+    return
   }
