@@ -41,18 +41,7 @@ function App() {
 
   return (
     <div className="px-4">
-      <button
-        onClick={() => {
-          dispatch(addTodo({ Todo: "test r", description: "test r" }));
-        }}
-      >
-        Add
-      </button>
-      <Form
-        
-        setOpen={setOpen}
-        setIsSuccess={setIsSuccess}
-      />
+      <Form setOpen={setOpen} setIsSuccess={setIsSuccess} />
       {data?.length ? (
         <List />
       ) : (

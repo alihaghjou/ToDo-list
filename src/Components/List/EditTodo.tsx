@@ -43,7 +43,8 @@ const EditTodo = ({
     // };
     // tempData.splice(index, 1, Set);
     // setData(tempData);
-    dispatch(editTodo)
+    dispatch(editTodo({EachTodo, editTitleValue, editDescriptionValue}))
+    console.log(selector)
     handleCloseModal();
   }
 

@@ -40,7 +40,6 @@ const EachItemAction = ({
         break;
     }
   }
-  console.log(selector)
   return (
     <div className="flex flex-row justify-between">
       <div>

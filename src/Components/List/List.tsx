@@ -10,8 +10,6 @@ const List = ({
 }) => {
   const selector = useSelector((state: RootState) => state.todo)
   const [displayData, setDisplayData] = useState<todoType[]>([]);
-  // const isOnGoing = data.filter((item) => item.completed !== true);
-  // const isComplete = data.filter((item) => item.completed === true);
 
   function filterList(action: "complete" | "onGoing" | "all") {
     switch (action) {

@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { todoInput } from "../types/types";
+import { todoInput, todoType } from "../types/types";
 
-export const addTodoFunction = (state, action: PayloadAction<todoInput>) => {
+export const addTodoFunction = (state: todoType[], action: PayloadAction<todoInput>) => {
     if (!state?.length) {
       state.push(
         {

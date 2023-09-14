@@ -4,12 +4,9 @@ import {
   Typography,
   AccordionDetails,
 } from "@mui/material";
-import React from "react";
 import EachItemAction from "./EachItemAction";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { todoType } from "../../types/types";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 
 const EachTodoDisplay = ({
   displayData,
