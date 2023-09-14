@@ -4,15 +4,26 @@ import Form from "./Components/Form/Form";
 import List from "./Components/List/List";
 import MessageBar from "./Components/MessageBar";
 import type { todoType } from "./types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store";
+import { addTodo } from "./dataSlice";
 
 //TODO: add filter button
 // change site font based on screen size
 
 function App() {
+  const selector = useSelector((state: RootState) => state.todo)
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [data, setData] = useState<todoType[]>([]);
   const render = useRef(0);
+
+  console.log(selector)
+
+  useEffect(() => {
+    console.log(selector)
+  }, [selector])
 
   useEffect(() => {
     if (render.current === 0) {
@@ -30,6 +41,7 @@ function App() {
 
   return (
     <div className="px-4">
+      <button onClick={() => {dispatch(addTodo({Todo:"test r", description:"test r"}))}}>Add</button>
       <Form
         data={data}
         setData={setData}

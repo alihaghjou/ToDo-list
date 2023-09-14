@@ -8,6 +8,8 @@ import React from "react";
 import EachItemAction from "./EachItemAction";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { todoType } from "../../types/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const EachTodoDisplay = ({
   displayData,
@@ -18,6 +20,7 @@ const EachTodoDisplay = ({
   data: todoType[];
   setData: React.Dispatch<React.SetStateAction<todoType[]>>;
 }) => {
+  const selector = useSelector((state: RootState) => state.todo)
   return (
     <>
       {displayData.map((EachTODO) => (
