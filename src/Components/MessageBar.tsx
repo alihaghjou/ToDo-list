@@ -1,25 +1,22 @@
 import { Snackbar, AlertTitle, Alert } from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { openMessage } from "../redux/openSlice";
 
-const MessageBar = ({
-  open,
-  setOpen,
-  isSuccess,
-}: {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isSuccess: boolean;
-}) => {
-  const handleClose = () => setOpen(false);
+const MessageBar = () => {
+  const {open, success} = useSelector((state: RootState) => state.open)
+  const dispatch = useDispatch()
+  const handleClose = () => dispatch(openMessage({open: false, success: false}));
   return (
     <Snackbar
       open={open}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
-      {isSuccess ? (
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+      {success ? (
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }} >
           <AlertTitle>Success</AlertTitle>
           Your Todo Successfully Added To List!
         </Alert>

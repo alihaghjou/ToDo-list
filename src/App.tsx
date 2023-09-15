@@ -6,14 +6,10 @@ import MessageBar from "./Components/MessageBar";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 
-//TODO: add filter button
-// add complete and delete slice
-// add success and open slice
+// make open and success available in other state for more functionality
 
 function App() {
   const data = useSelector((state: RootState) => state.todo);
-  const [open, setOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     localStorage.removeItem("data");
@@ -31,7 +27,7 @@ function App() {
         </Typography>
       )}
 
-      <MessageBar open={open} setOpen={setOpen} isSuccess={isSuccess} />
+      <MessageBar />
     </div>
   );
 }

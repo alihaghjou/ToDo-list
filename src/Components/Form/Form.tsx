@@ -4,12 +4,14 @@ import type { todoType, todoInput } from "../../types/types";
 import FormDisplay from "./FormDisplay";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../redux/dataSlice";
+import { openMessage } from "../../redux/openSlice";
 
 const Form = () => {
   const dispatch = useDispatch()
   const { register, handleSubmit, reset } = useForm<todoInput>();
   const onSubmit: SubmitHandler<todoInput> = (input) => {
     dispatch(addTodo(input))
+    dispatch(openMessage({open: true, success: true}))
     reset()
   };
 
