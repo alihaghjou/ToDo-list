@@ -23,20 +23,10 @@ const EachItemAction = ({
     if (!selector) return;
     switch (action) {
       case "delete":
-        dispatch(deleteTodo())
-        // const deleteItem = data?.filter((item) => item.id !== selected.id);
-        // setData(deleteItem);
-        // localStorage.setItem("data", JSON.stringify(deleteItem));
+        dispatch(deleteTodo(selected))
         break;
       case "complete":
-        dispatch(completeTodo())
-        // const completeItem = data?.filter((item) => item.id === selected.id);
-        // const restItem = data?.filter((item) => item.id !== selected.id);
-        // const place = data.findIndex((item) => item.id === selected.id);
-        // completeItem[0].completed = true;
-        // restItem.splice(place, 0, completeItem[0]);
-        // setData(restItem);
-        // localStorage.setItem("data", JSON.stringify(restItem));
+        dispatch(completeTodo(selected))
         break;
     }
   }
@@ -44,7 +34,7 @@ const EachItemAction = ({
     <div className="flex flex-row justify-between">
       <div>
         <section className="flex">
-          <Typography fontSize="20px" marginRight="10px">
+          <Typography fontSize="20px" marginRight="10px" className="capitalize">
             {EachTodo.title}
           </Typography>
           <IconButton onClick={handleOpenModal} size="small">

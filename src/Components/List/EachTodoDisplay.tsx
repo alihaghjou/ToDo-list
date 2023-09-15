@@ -18,7 +18,7 @@ const EachTodoDisplay = ({
       {[...displayData].reverse().map((EachTODO) => (
         <div
           key={EachTODO.id}
-          className="flex flex-col py-4 justify-between pr-4 border-b-2 border-sky-900 hover:shadow-xl"
+          className="flex flex-col p-4 justify-between border-b-2 border-sky-900 hover:shadow-xl"
         >
           <EachItemAction EachTodo={EachTODO} />
           {EachTODO.description && (
