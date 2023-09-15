@@ -1,6 +1,5 @@
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import type { todoType, todoInput } from "../../types/types";
+import type { todoInput } from "../../types/types";
 import FormDisplay from "./FormDisplay";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../redux/dataSlice";
