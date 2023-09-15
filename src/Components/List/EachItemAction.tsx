@@ -57,9 +57,7 @@ const EachItemAction = ({
           setOpen={setOpen}
         />
         <Typography fontSize="12px" fontStyle="italic" color="lightgray">
-          {typeof EachTodo.date !== "string"
-            ? EachTodo.date.toDateString()
-            : EachTodo.date}
+          {EachTodo.date}
         </Typography>
       </div>
       <div className="flex flex-row justify-center items-center gap-2">

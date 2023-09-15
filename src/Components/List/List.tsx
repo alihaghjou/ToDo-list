@@ -36,9 +36,9 @@ const List = () => {
     <div className="flex flex-col gap-4 my-6 relative">
       <EachTodoDisplay displayData={displayData} />
       <ButtonGroup fullWidth className="absolute bottom-0 translate-y-full">
-        <Button onClick={() => filterList("all")}>All</Button>
-        <Button onClick={() => filterList("complete")}>Complete</Button>
-        <Button onClick={() => filterList("onGoing")}>OnGoing</Button>
+        <Button sx={{color: "aliceblue"}} onClick={() => filterList("all")}>All</Button>
+        <Button sx={{color: "aliceblue"}} onClick={() => filterList("complete")}>Complete</Button>
+        <Button sx={{color: "aliceblue"}} onClick={() => filterList("onGoing")}>OnGoing</Button>
       </ButtonGroup>
     </div>
   );

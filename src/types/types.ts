@@ -2,7 +2,7 @@ export interface todoType {
   id: number;
   title: string;
   completed: boolean;
-  date: Date;
+  date: string;
   description: string;
 }
 

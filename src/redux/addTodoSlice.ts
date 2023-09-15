@@ -8,7 +8,7 @@ export const addTodoFunction = (state: todoType[], action: PayloadAction<todoInp
           id: 1,
           title: action.payload.Todo,
           completed: false,
-          date: new Date(),
+          date: new Date().toDateString(),
           description: action.payload.description,
         },
       );
@@ -19,12 +19,11 @@ export const addTodoFunction = (state: todoType[], action: PayloadAction<todoInp
         throw new Error("Enter New Title");
       }
     });
-    const copy = [...state];
     state.push({
-      id: state[0].id + 1,
+      id: state[state.length -1].id + 1,
       title: action.payload.Todo,
       completed: false,
-      date: new Date(),
+      date: new Date().toDateString(),
       description: action.payload.description,
     });
     return

@@ -39,8 +39,9 @@ const FormDisplay = ({
       </div>
       <Button
         variant="outlined"
+        color="secondary"
         type="submit"
-        className="px-6 py-2 text-white"
+        sx={{color: "white"}}
         size="large"
       >
         Submit
